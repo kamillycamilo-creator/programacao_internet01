@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>To-Do List (MVC)</title>
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,12 +25,13 @@
                 <li>
                     <?php echo htmlspecialchars($tarefa['descricao']); ?>
                     <a href="index.php?action=excluir&delete=<?php echo $tarefa['id']; ?>">Excluir</a>
+                    <a href="index.php?action=editar&id=<?php echo $tarefa['id']; ?>">Editar</a>
                 </li>
             <?php endforeach; ?>
         </ul>
     <?php else: ?>
         <p>Não há tarefas ainda!</p>
     <?php endif; ?>
-
+    
 </body>
 </html>

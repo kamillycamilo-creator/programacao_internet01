@@ -11,7 +11,7 @@ class Tarefa{
 
     ## Listar 
 
-    public function listar(){
+    public function listarAtivas(){
         $tarefas = [];
         $sql = "SELECT * FROM tarefas ORDER BY data_criacao DESC"; 
         $resultado = $this->conn->query($sql); 
@@ -25,6 +25,10 @@ class Tarefa{
         return $tarefas;
     }
 
+    public function listar() {
+    return []; 
+    }
+
     ## Criar 
 
     public function criar($descricao){
@@ -33,7 +37,7 @@ class Tarefa{
         return $this->conn->query($sql); 
     }
 
-    ## Exlcuir 
+    ## Excluir 
 
     public function excluir($id){
         $id = intval($id);
@@ -41,9 +45,22 @@ class Tarefa{
         return $this->conn->query($sql); 
     }
 
+    ## Editar
+    public function editar($id, $descricao){
+        $id = intval($id);
+        $descricao = $this->conn->real_escape_string($descricao);
+        $sql = "UPDATE tarefas SET descricao = '$descricao' WHERE id = $id";
+        return $this->conn->query($sql);
+    }
+
+    ## Buscar por ID (para preencher o formulário de edição)
+    public function buscarPorId($id){
+        $id = intval($id);
+        $sql = "SELECT * FROM tarefas WHERE id = $id";
+        $resultado = $this->conn->query($sql);
+        return $resultado->fetch_assoc();
+    }
+
 }
-
-?>
-
 
 ?>

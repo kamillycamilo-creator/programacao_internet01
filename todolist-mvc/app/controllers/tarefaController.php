@@ -8,7 +8,7 @@ class TarefaController {
     }
 
     public function index(){
-        $tarefas = $this->tarefaModel->listar(); 
+        $tarefas = $this->tarefaModel->listarAtivas(); 
         include __DIR__ . '/../views/listar.php'; 
     }
 
@@ -25,6 +25,22 @@ class TarefaController {
         }
         header("Location: index.php"); 
     }
+public function editar() {
+    if (isset($_GET['id'])) {
+       $tarefa = $this->tarefaModel->buscarPorId($_GET['id']);
+        include __DIR__ . '/../views/editar.php';
+    }
+}
+
+ 
+    public function atualizar() {
+        if (isset($_POST['id']) && isset($_POST['descricao'])) {
+            $this->tarefaModel->editar($_POST['id'], $_POST['descricao']);
+        }
+        header("Location: index.php");
+    }
 }
 
 ?>
+
+
