@@ -2,13 +2,13 @@
 
 
 $host = 'localhost';
-$usuaro = 'root';
+$usuarios = 'root';
 $senha = '';
 $database = 'login';
 
-$conn = new mysqli($host, $usuario, $senha, $database );
+$mysqli = new mysqli($host, $usuarios, $senha, $database );
 
-if($conn -> connect_error){
+if($mysqli -> connect_error){
     die ("não deu certo fazer a conexão");
 }
 
