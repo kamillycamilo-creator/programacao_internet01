@@ -5,7 +5,7 @@ class Database{
     private $host = "localhost"; 
     private $usario = "root"; 
     private $senha = ""; 
-    private $banco = "todo_list";
+    private $banco = "todolist";
     public $conn; 
 
     public function conectar(){
